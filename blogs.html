@@ -1,0 +1,46 @@
+---
+layout: default
+title: "My Blogs"
+---
+<main>
+  <section class="py-5">
+    <div class="container">
+      <!-- 标题 -->
+      <h1 class="display-5 fw-bold text-center text-primary mb-5">
+        My Blogs
+      </h1>
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+        {% for post in site.posts %}
+        <div class="col">
+          <div class="card h-100 shadow-sm border-0 rounded-3">
+            <!-- 封面图片 -->
+            {% if post.image %}
+            <img src="{{ post.image }}" class="card-img-top rounded-top-3" alt="{{ post.title }}" loading="lazy">
+            {% endif %}
+            <div class="card-body d-flex flex-column">
+              <!-- 标题 -->
+              <h5 class="card-title text-truncate fw-bold" style="max-width: 100%;">
+                {{ post.title }}
+              </h5>
+              <!-- 日期 -->
+              <p class="card-text text-muted small mb-2">
+                <i class="bi bi-calendar3"></i> {{ post.date | date: "%Y年%m月%d日" }}
+              </p>
+              <!-- 摘要 -->
+              {% if post.excerpt %}
+              <p class="card-text text-truncate" style="max-height: 3rem; overflow: hidden;">
+                {{ post.excerpt }}
+              </p>
+              {% endif %}
+              <!-- 阅读更多按钮 -->
+              <a href="{{ post.url }}" class="btn btn-primary btn-sm mt-auto d-block">
+                <i class="bi bi-box-arrow-right me-1"></i> Read More
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</main>

@@ -1,0 +1,21 @@
+- title: "An XGBoost risk prediction model of cardiovascular and cerebrovascular diseases with plateau healthcare dataset"
+  author: "Yipeng Li, Wen Cao, Wenbing Chang, Shenghan Zhou, Runyu Zhang"
+  date: "17/01/2023"
+  description: "This paper aims to build an XGBoost risk prediction model of cardiovascular and cerebrovascular diseases (CVDs) with plateau healthcare dataset. The incidence of cardiovascular and cerebrovascular diseases is very high in plateau areas. And it is difficult to detect partly due to the high cost of professional test. It will have high practical value to build a model to predict the risk of cardiovascular and cerebrovascular diseases by using the common healthcare data (e.g. fundus data). The paper proposes an XGBoost prediction model of CVDs risk with the fundus disease and other healthcare data set. The influence of various fundus disease factors on cardiovascular and cerebrovascular diseases is analyzed in the study. The result suggests that the proposed XGBoost prediction model performs better in terms of accuracy and recall rate compared with other models."
+  url: "https://dl.acm.org/doi/10.1145/3573834.3574558"
+  doi: 10.1145/3573834.3574558
+
+- title: "The Progress of Superconducting Magnet Designing for ITER"
+  author: "Yuhang Duan, Yipeng Li, Lidanyan Zhou"
+  date: "23/05/2022"
+  description: "Contemporarily, the fusion power shows a strong potential to address the issue energy crisis faced by mankind among the non-traditional energy. This article will introduce ITER and its three main components which provide the magnetic field conditions for realizing fusion reaction confinement. Specifically, the toroidal field system, the polar field system and the central solenoid system coils are discussed including the parameters, achievable remarkable outputs etc. With the supporting of the generating stable and intense magnetic field, there is no doubt that ITER will play an important role in guiding the commercialization of fusion. These results offer a guideline for future magnetic field design for future magnetic confinement fusion scenarios."
+  url: "https://ieeexplore.ieee.org/document/9777335"
+  doi: 10.1109/IPEC54454.2022.9777335
+
+- title: "A bagging ensemble learning traffic demand prediction model based on improved LSTM and transformer"
+  author: "Tianhuai Wang, Yipeng Li, Wenbing Chang, Shenghan Zhou"
+  date: "28/12/2022"
+  description: "The paper aims to build a traffic prediction model for online car-hailing demand with Improved LSTM and Transformer. There are many factors that affect demand, such as temporal features, spatial features, high signal-to-noise ratio, and so on. In this study, LSTM and Transformer are used to extract the temporal and spatial features of data. The temporal and spatial features are used for bagging ensemble learning to predict the online car-hailing orders. An improved LSTM suitable for Traffic data sets is proposed in this paper. In LSTM, we use wavelet decomposition and reconstruction to extract the small-amplitude high-frequency signal from data. The extracted signal is translated and superimposed into the results of the model. The average MAE of 21.24 is obtained on Online Car-hailing Information Data Sets. Compared with other methods, the results suggest the proposed traffic demand prediction model has better accuracy."
+  url: "https://www.spiedigitallibrary.org/conference-proceedings-of-spie/12506/2662894/A-bagging-ensemble-learning-traffic-demand-prediction-model-based-on/10.1117/12.2662894.full"
+  doi: 10.1117/12.2662894
+
