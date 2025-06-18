@@ -103,4 +103,4 @@ theme: landscape
 deploy:
   type: git
   repo: https://github.com/MoozieLee/MoozieLee.github.io.git
-  branch: main
+  branch: gh-pages
