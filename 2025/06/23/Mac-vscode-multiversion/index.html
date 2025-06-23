@@ -20,30 +20,35 @@
     var CONFIG = {"hostname":"moozielee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="* But it refused.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Moozie的小屋">
-<meta property="og:url" content="http://moozielee.github.io/index.html">
+  <meta name="description" content="在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。 背景 某些远程服务器环境较旧（如仅支持 glibc 2.17），新版本 VSCode 无法兼容，必须使用特定的老版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac 上配置多个版本的 vscode">
+<meta property="og:url" content="http://moozielee.github.io/2025/06/23/Mac-vscode-multiversion/index.html">
 <meta property="og:site_name" content="Moozie的小屋">
-<meta property="og:description" content="* But it refused.">
+<meta property="og:description" content="在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。 背景 某些远程服务器环境较旧（如仅支持 glibc 2.17），新版本 VSCode 无法兼容，必须使用特定的老版本">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-23T06:26:14.000Z">
+<meta property="article:modified_time" content="2025-06-23T07:15:24.137Z">
 <meta property="article:author" content="Moozie Lee">
+<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="远程开发">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://moozielee.github.io/">
+<link rel="canonical" href="http://moozielee.github.io/2025/06/23/Mac-vscode-multiversion/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Moozie的小屋</title>
+  <title>Mac 上配置多个版本的 vscode | Moozie的小屋</title>
   
 
 
@@ -152,9 +157,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
+
+    
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -170,10 +176,9 @@
       <meta itemprop="name" content="Moozie的小屋">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/06/23/Mac-vscode-multiversion/" class="post-title-link" itemprop="url">Mac 上配置多个版本的 vscode</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Mac 上配置多个版本的 vscode
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -206,7 +211,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。</p>
+        <p>在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。</p>
 <h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><ul>
 <li>某些远程服务器环境较旧（如仅支持 glibc 2.17），新版本 VSCode 无法兼容，必须使用特定的老版本 VSCode 进行连接</li>
 <li>同时希望保留新版本 VSCode，以便使用本地最新特性</li>
@@ -240,87 +245,35 @@
 </ul>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过配置 alias + 独立目录 + 禁止自动更新，我们可以在 Mac 上优雅地运行多个 VSCode 版本，既保持本地开发效率，又兼容老旧环境。</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
+          <div class="post-tags">
+              <a href="/tags/macOS/" rel="tag"># macOS</a>
+              <a href="/tags/vscode/" rel="tag"># vscode</a>
+              <a href="/tags/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="tag"># 远程开发</a>
+          </div>
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://moozielee.github.io/2025/06/23/Hi-There/">
+        
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Moozie Lee">
-      <meta itemprop="description" content="* But it refused.">
-    </span>
 
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moozie的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/06/23/Hi-There/" class="post-title-link" itemprop="url">Hi, there 👋</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-06-23 13:29:03 / 修改时间：14:18:21" itemprop="dateCreated datePublished" datetime="2025-06-23T13:29:03+08:00">2025-06-23</time>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>你好，我是 Moozie 👨‍💻  </p>
-<p>这个博客将用于：</p>
-<ul>
-<li>✍️ 记录学习与项目经验  </li>
-<li>📚 分享技术与工具心得  </li>
-<li>🧠 偶尔输出一些思考与总结</li>
-</ul>
-<p>希望能持续更新，也欢迎你的关注和交流 🙌</p>
-
-      
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/06/23/Hi-There/" rel="prev" title="Hi, there 👋">
+      <i class="fa fa-chevron-left"></i> Hi, there 👋
+    </a></div>
+      <div class="post-nav-item"></div>
     </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
@@ -373,6 +326,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC-VSCode"><span class="nav-number">2.</span> <span class="nav-text">下载安装不同版本 VSCode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE%E7%8B%AC%E7%AB%8B%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">为每个版本配置独立数据目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%B2%E6%AD%A2%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="nav-number">4.</span> <span class="nav-text">防止自动更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">5.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

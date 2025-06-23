@@ -20,30 +20,32 @@
     var CONFIG = {"hostname":"moozielee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta name="description" content="* But it refused.">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Moozie的小屋">
-<meta property="og:url" content="http://moozielee.github.io/index.html">
+  <meta name="description" content="你好，我是 Moozie 👨‍💻   这个博客将用于：  ✍️ 记录学习与项目经验   📚 分享技术与工具心得   🧠 偶尔输出一些思考与总结  希望能持续更新，也欢迎你的关注和交流 🙌">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hi, there 👋">
+<meta property="og:url" content="http://moozielee.github.io/2025/06/23/Hi-There/index.html">
 <meta property="og:site_name" content="Moozie的小屋">
-<meta property="og:description" content="* But it refused.">
+<meta property="og:description" content="你好，我是 Moozie 👨‍💻   这个博客将用于：  ✍️ 记录学习与项目经验   📚 分享技术与工具心得   🧠 偶尔输出一些思考与总结  希望能持续更新，也欢迎你的关注和交流 🙌">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-23T05:29:03.000Z">
+<meta property="article:modified_time" content="2025-06-23T06:18:21.908Z">
 <meta property="article:author" content="Moozie Lee">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="http://moozielee.github.io/">
+<link rel="canonical" href="http://moozielee.github.io/2025/06/23/Hi-There/">
 
 
 <script id="page-configurations">
   // https://hexo.io/docs/variables.html
   CONFIG.page = {
     sidebar: "",
-    isHome : true,
-    isPost : false,
+    isHome : false,
+    isPost : true,
     lang   : 'zh-CN'
   };
 </script>
 
-  <title>Moozie的小屋</title>
+  <title>Hi, there 👋 | Moozie的小屋</title>
   
 
 
@@ -152,109 +154,10 @@
         <div class="content-wrap">
           
 
-          <div class="content index posts-expand">
+          <div class="content post posts-expand">
             
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="http://moozielee.github.io/2025/06/23/Mac-vscode-multiversion/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.png">
-      <meta itemprop="name" content="Moozie Lee">
-      <meta itemprop="description" content="* But it refused.">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Moozie的小屋">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/06/23/Mac-vscode-multiversion/" class="post-title-link" itemprop="url">Mac 上配置多个版本的 vscode</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-              
-
-              <time title="创建时间：2025-06-23 14:26:14 / 修改时间：15:15:24" itemprop="dateCreated datePublished" datetime="2025-06-23T14:26:14+08:00">2025-06-23</time>
-            </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">技术经验</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
 
     
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。</p>
-<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><ul>
-<li>某些远程服务器环境较旧（如仅支持 glibc 2.17），新版本 VSCode 无法兼容，必须使用特定的老版本 VSCode 进行连接</li>
-<li>同时希望保留新版本 VSCode，以便使用本地最新特性</li>
-<li>希望每个版本的插件和配置互不影响</li>
-</ul>
-<h1 id="下载安装不同版本-VSCode"><a href="#下载安装不同版本-VSCode" class="headerlink" title="下载安装不同版本 VSCode"></a>下载安装不同版本 VSCode</h1><ol>
-<li>打开 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/updates">VSCode 版本下载页</a></li>
-<li>选择目标版本，下载 macOS 的 ZIP 包</li>
-<li>解压后，重命名为：<code>Visual Studio Code - 1.85.app</code> （这里使用的是 VSCode 1.85）</li>
-<li>移动到应用程序目录</li>
-</ol>
-<h1 id="为每个版本配置独立数据目录"><a href="#为每个版本配置独立数据目录" class="headerlink" title="为每个版本配置独立数据目录"></a>为每个版本配置独立数据目录</h1><p>默认情况下，VSCode 会将用户配置保存在 <code>~/Library/Application Support/Code</code> 目录中，插件则存储在 <code>~/.vscode/extensions</code>。如果通过桌面图标直接启动 VSCode，程序将自动加载这两个位置的配置和插件文件。</p>
-<p>若希望在一台设备上同时使用多个版本的 VSCode，并确保它们之间的配置互不干扰，就需要通过命令行方式启动，并显式指定各自的配置目录。VSCode 提供了 <code>--user-data-dir</code> 参数用于指定用户配置目录，<code>--extensions-dir</code> 参数用于指定插件存放目录。</p>
-<p>首先为用户配置和插件创建对应的文件夹</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/vscode/vscode-1.85/user-data</span><br><span class="line"><span class="built_in">mkdir</span> ~/vscode/vscode-1.85/extensions</span><br></pre></td></tr></table></figure>
-
-<p>在 <code>~/.zshrc</code> 或 <code>~/.bashrc</code> 中配置 alias：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> vscode-1.85=<span class="string">&quot;/Applications/Visual\ Studio\ Code\ -\ 1.85.app/Contents/Resources/app/bin/code \</span></span><br><span class="line"><span class="string">  --user-data-dir=<span class="variable">$HOME</span>/vscode/vscode-1.85/user-data \</span></span><br><span class="line"><span class="string">  --extensions-dir=<span class="variable">$HOME</span>/vscode/vscode-1.85/extensions&quot;</span></span><br></pre></td></tr></table></figure>
-
-<h1 id="防止自动更新"><a href="#防止自动更新" class="headerlink" title="防止自动更新"></a>防止自动更新</h1><p>在使用命令行启动前，可以在目标的用户配置目录中手动创建设置文件，例如<code>./user-data/User/settings.json</code>，并添加以下配置以禁止插件和程序自动更新：</p>
-<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;extensions.autoUpdate&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;update.mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
-
-<p>这样可以避免 VSCode 启动后自动检查并安装新版本，确保所用版本稳定不变。</p>
-<p>完成配置后，即可使用如下命令启动指定版本的 VSCode：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vscode-1.85 yourfilepath</span><br></pre></td></tr></table></figure>
-
-<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>双击 <code>.app</code> 文件会忽略 alias 中的参数，直接加载默认配置。因此建议：</p>
-<ul>
-<li><strong>不要手动双击 <code>.app</code> 启动</strong>，而是从 terminal 通过 <code>vscode-1.85</code> 启动</li>
-<li>或者创建 Automator 快捷方式，封装带参数的 shell 启动命令</li>
-</ul>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过配置 alias + 独立目录 + 禁止自动更新，我们可以在 Mac 上优雅地运行多个 VSCode 版本，既保持本地开发效率，又兼容老旧环境。</p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
@@ -270,10 +173,9 @@
       <meta itemprop="name" content="Moozie的小屋">
     </span>
       <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2025/06/23/Hi-There/" class="post-title-link" itemprop="url">Hi, there 👋</a>
-        </h2>
+        <h1 class="post-title" itemprop="name headline">
+          Hi, there 👋
+        </h1>
 
         <div class="post-meta">
             <span class="post-meta-item">
@@ -297,7 +199,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-          <p>你好，我是 Moozie 👨‍💻  </p>
+        <p>你好，我是 Moozie 👨‍💻  </p>
 <p>这个博客将用于：</p>
 <ul>
 <li>✍️ 记录学习与项目经验  </li>
@@ -306,21 +208,30 @@
 </ul>
 <p>希望能持续更新，也欢迎你的关注和交流 🙌</p>
 
-      
     </div>
 
     
     
     
+
       <footer class="post-footer">
-        <div class="post-eof"></div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/2025/06/23/Mac-vscode-multiversion/" rel="next" title="Mac 上配置多个版本的 vscode">
+      Mac 上配置多个版本的 vscode <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
       </footer>
+    
   </article>
   
   
-  
-
-
   
 
 
