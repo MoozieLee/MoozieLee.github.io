@@ -3,17 +3,17 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: MoozieLee's Blog
-subtitle: ''
-description: ''
-keywords:
+title: Moozie的小屋
+subtitle: 保持每一份热爱，奔赴下一个山海
+description: '* But it refused.'
+keywords: ''
 author: Moozie Lee
-language: en
-timezone: ''
+language: zh-CN
+timezone: Asia/Shanghai
 
 # URL
 ## Set your site url here. For example, if you use GitHub Page, set url as 'https://username.github.io/project'
-url: http://example.com
+url: http://moozielee.github.io
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 pretty_urls:
@@ -47,13 +47,13 @@ syntax_highlighter: highlight.js
 highlight:
   line_number: true
   auto_detect: false
-  tab_replace: ''
+  tab_replace: '    '
   wrap: true
   hljs: false
 prismjs:
   preprocess: true
   line_number: true
-  tab_replace: ''
+  tab_replace: '    '
 
 # Home page setting
 # path: Root path for your blogs index page. (default = '')
