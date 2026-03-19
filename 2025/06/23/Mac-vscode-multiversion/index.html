@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"moozielee.github.io","root":"/","scheme":"Muse","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"always","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。 背景 某些远程服务器环境较旧（如仅支持 glibc 2.17），新版本 VSCode 无法兼容，必须使用特定的老版本">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mac 上配置多个版本的 vscode">
+<meta property="og:url" content="http://moozielee.github.io/2025/06/23/Mac-vscode-multiversion/index.html">
+<meta property="og:site_name" content="Moozie的小屋">
+<meta property="og:description" content="在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。 背景 某些远程服务器环境较旧（如仅支持 glibc 2.17），新版本 VSCode 无法兼容，必须使用特定的老版本">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2025-06-23T06:26:14.000Z">
+<meta property="article:modified_time" content="2026-03-19T11:43:49.889Z">
+<meta property="article:author" content="Moozie Lee">
+<meta property="article:tag" content="macOS">
+<meta property="article:tag" content="vscode">
+<meta property="article:tag" content="远程开发">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="http://moozielee.github.io/2025/06/23/Mac-vscode-multiversion/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Mac 上配置多个版本的 vscode | Moozie的小屋</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Moozie的小屋</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">保持每一份热爱，奔赴下一个山海</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签<span class="badge">5</span></a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类<span class="badge">1</span></a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档<span class="badge">3</span></a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://moozielee.github.io/2025/06/23/Mac-vscode-multiversion/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Moozie Lee">
+      <meta itemprop="description" content="* But it refused.">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Moozie的小屋">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Mac 上配置多个版本的 vscode
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2025-06-23 14:26:14" itemprop="dateCreated datePublished" datetime="2025-06-23T14:26:14+08:00">2025-06-23</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2026-03-19 19:43:49" itemprop="dateModified" datetime="2026-03-19T19:43:49+08:00">2026-03-19</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF%E7%BB%8F%E9%AA%8C/" itemprop="url" rel="index"><span itemprop="name">技术经验</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。</p>
+<h1 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h1><ul>
+<li>某些远程服务器环境较旧（如仅支持 glibc 2.17），新版本 VSCode 无法兼容，必须使用特定的老版本 VSCode 进行连接</li>
+<li>同时希望保留新版本 VSCode，以便使用本地最新特性</li>
+<li>希望每个版本的插件和配置互不影响</li>
+</ul>
+<h1 id="下载安装不同版本-VSCode"><a href="#下载安装不同版本-VSCode" class="headerlink" title="下载安装不同版本 VSCode"></a>下载安装不同版本 VSCode</h1><ol>
+<li>打开 <a target="_blank" rel="noopener" href="https://code.visualstudio.com/updates">VSCode 版本下载页</a></li>
+<li>选择目标版本，下载 macOS 的 ZIP 包</li>
+<li>解压后，重命名为：<code>Visual Studio Code - 1.85.app</code> （这里使用的是 VSCode 1.85）</li>
+<li>移动到应用程序目录</li>
+</ol>
+<h1 id="为每个版本配置独立数据目录"><a href="#为每个版本配置独立数据目录" class="headerlink" title="为每个版本配置独立数据目录"></a>为每个版本配置独立数据目录</h1><p>默认情况下，VSCode 会将用户配置保存在 <code>~/Library/Application Support/Code</code> 目录中，插件则存储在 <code>~/.vscode/extensions</code>。如果通过桌面图标直接启动 VSCode，程序将自动加载这两个位置的配置和插件文件。</p>
+<p>若希望在一台设备上同时使用多个版本的 VSCode，并确保它们之间的配置互不干扰，就需要通过命令行方式启动，并显式指定各自的配置目录。VSCode 提供了 <code>--user-data-dir</code> 参数用于指定用户配置目录，<code>--extensions-dir</code> 参数用于指定插件存放目录。</p>
+<p>首先为用户配置和插件创建对应的文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">mkdir</span> ~/vscode/vscode-1.85/user-data</span><br><span class="line"><span class="built_in">mkdir</span> ~/vscode/vscode-1.85/extensions</span><br></pre></td></tr></table></figure>
+
+<p>在 <code>~/.zshrc</code> 或 <code>~/.bashrc</code> 中配置 alias：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">alias</span> vscode-1.85=<span class="string">&quot;/Applications/Visual\ Studio\ Code\ -\ 1.85.app/Contents/Resources/app/bin/code \</span></span><br><span class="line"><span class="string">  --user-data-dir=<span class="variable">$HOME</span>/vscode/vscode-1.85/user-data \</span></span><br><span class="line"><span class="string">  --extensions-dir=<span class="variable">$HOME</span>/vscode/vscode-1.85/extensions&quot;</span></span><br></pre></td></tr></table></figure>
+
+<h1 id="防止自动更新"><a href="#防止自动更新" class="headerlink" title="防止自动更新"></a>防止自动更新</h1><p>在使用命令行启动前，可以在目标的用户配置目录中手动创建设置文件，例如<code>./user-data/User/settings.json</code>，并添加以下配置以禁止插件和程序自动更新：</p>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">    <span class="attr">&quot;extensions.autoUpdate&quot;</span><span class="punctuation">:</span> <span class="literal"><span class="keyword">false</span></span><span class="punctuation">,</span></span><br><span class="line">    <span class="attr">&quot;update.mode&quot;</span><span class="punctuation">:</span> <span class="string">&quot;none&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<p>这样可以避免 VSCode 启动后自动检查并安装新版本，确保所用版本稳定不变。</p>
+<p>完成配置后，即可使用如下命令启动指定版本的 VSCode：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vscode-1.85 yourfilepath</span><br></pre></td></tr></table></figure>
+
+<h1 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h1><p>双击 <code>.app</code> 文件会忽略 alias 中的参数，直接加载默认配置。因此建议：</p>
+<ul>
+<li><strong>不要手动双击 <code>.app</code> 启动</strong>，而是从 terminal 通过 <code>vscode-1.85</code> 启动</li>
+<li>或者创建 Automator 快捷方式，封装带参数的 shell 启动命令</li>
+</ul>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>通过配置 alias + 独立目录 + 禁止自动更新，我们可以在 Mac 上优雅地运行多个 VSCode 版本，既保持本地开发效率，又兼容老旧环境。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/macOS/" rel="tag"># macOS</a>
+              <a href="/tags/vscode/" rel="tag"># vscode</a>
+              <a href="/tags/%E8%BF%9C%E7%A8%8B%E5%BC%80%E5%8F%91/" rel="tag"># 远程开发</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/06/23/Hi-There/" rel="prev" title="Hi, there 👋">
+      <i class="fa fa-chevron-left"></i> Hi, there 👋
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2026/03/19/openclaw-remote-access-with-tailscale/" rel="next" title="用 Tailscale 远程连接 Mac，并访问 OpenClaw Web UI">
+      用 Tailscale 远程连接 Mac，并访问 OpenClaw Web UI <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E8%83%8C%E6%99%AF"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%8B%E8%BD%BD%E5%AE%89%E8%A3%85%E4%B8%8D%E5%90%8C%E7%89%88%E6%9C%AC-VSCode"><span class="nav-number">2.</span> <span class="nav-text">下载安装不同版本 VSCode</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%B8%BA%E6%AF%8F%E4%B8%AA%E7%89%88%E6%9C%AC%E9%85%8D%E7%BD%AE%E7%8B%AC%E7%AB%8B%E6%95%B0%E6%8D%AE%E7%9B%AE%E5%BD%95"><span class="nav-number">3.</span> <span class="nav-text">为每个版本配置独立数据目录</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E9%98%B2%E6%AD%A2%E8%87%AA%E5%8A%A8%E6%9B%B4%E6%96%B0"><span class="nav-number">4.</span> <span class="nav-text">防止自动更新</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="nav-number">5.</span> <span class="nav-text">注意事项</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#%E6%80%BB%E7%BB%93"><span class="nav-number">6.</span> <span class="nav-text">总结</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Moozie Lee"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Moozie Lee</p>
+  <div class="site-description" itemprop="description">* But it refused.</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">5</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="links-of-author motion-element">
+      <span class="links-of-author-item">
+        <a href="https://github.com/MoozieLee" title="GitHub → https:&#x2F;&#x2F;github.com&#x2F;MoozieLee" rel="noopener" target="_blank"><i class="fab fa-github fa-fw"></i>GitHub</a>
+      </span>
+      <span class="links-of-author-item">
+        <a href="/yipeng.li.infinite@gmail.com" title="E-Mail → yipeng.li.infinite@gmail.com"><i class="fa fa-envelope fa-fw"></i>E-Mail</a>
+      </span>
+  </div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2025 – 
+  <span itemprop="copyrightYear">2026</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">© 2025 Moozie Lee. All rights reserved.</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://muse.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Muse</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/muse.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
