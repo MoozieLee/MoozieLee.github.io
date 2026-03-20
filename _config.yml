@@ -4,8 +4,8 @@
 
 # Site
 title: Moozie的小屋
-subtitle: 保持每一份热爱，奔赴下一个山海
-description: '* But it refused.'
+subtitle: 记录技术、工具与持续生长
+description: 算法工程师，技术爱好者
 keywords: ''
 author: Moozie Lee
 language: zh-CN
@@ -45,12 +45,14 @@ relative_link: false
 future: true
 syntax_highlighter: highlight.js
 highlight:
+  enable: true
   line_number: true
   auto_detect: false
   tab_replace: '    '
   wrap: true
   hljs: false
 prismjs:
+  enable: true
   preprocess: true
   line_number: true
   tab_replace: '    '
@@ -97,6 +99,9 @@ ignore:
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+
+symbols_count_time:
+  symbols: true
 
 # Deployment
 ## Docs: https://hexo.io/docs/one-command-deployment

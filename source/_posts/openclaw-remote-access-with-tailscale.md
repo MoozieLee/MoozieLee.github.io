@@ -1,6 +1,7 @@
 ---
 title: 用 Tailscale 远程连接 Mac，并访问 OpenClaw Web UI
 date: 2026-03-19 19:57:00
+description:
 tags:
     - OpenClaw
     - Tailscale
@@ -22,6 +23,8 @@ categories:
 - 用 **Tailscale Serve** 将 OpenClaw 的本地 Web UI 安全暴露到 Tailnet 中
 
 整套方案不复杂，不需要公网 IP，也不需要额外折腾端口映射。对个人开发和自托管场景来说，已经足够顺手。
+
+<!-- more -->
 
 # 场景说明
 
@@ -221,5 +224,8 @@ openclaw devices approve <requestId>
 整个流程可以概括为：
 
 > 先用 Tailscale 把设备接入同一个私有网络，再通过 SSH 管理终端，通过 `tailscale serve` 暴露 OpenClaw Web UI，最后按需完成设备授权。
+
+如果你已经有一台长期在线的 Mac，并且希望远程访问体验尽量简单、稳定、可控，那么这套方案很值得长期保留。
+�
 
 如果你已经有一台长期在线的 Mac，并且希望远程访问体验尽量简单、稳定、可控，那么这套方案很值得长期保留。

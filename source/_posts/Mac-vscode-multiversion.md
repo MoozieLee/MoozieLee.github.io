@@ -1,6 +1,7 @@
 ---
 title: Mac 上配置多个版本的 vscode
 date: 2025-06-23 14:26:14
+description:
 tags:
     - macOS
     - vscode
@@ -9,6 +10,8 @@ categories:
     - 技术经验
 ---
 在日常开发中，我们可能会因为插件兼容性、系统兼容性（如 glibc 版本）、远程开发需求等原因，需要在一台 Mac 电脑上同时使用多个不同版本的 Visual Studio Code（以下简称 VSCode）。本文将总结在 macOS 上配置多版本 VSCode 的完整流程和经验。
+
+<!-- more -->
 
 # 背景
 
