@@ -1,19 +1,18 @@
 ---
 title: 关于
 ---
-你好，我是 **Moozie**。
 
-一名算法工程师，也是一位长期的技术爱好者。
+你好，我是 **Moozie** 🧑‍💻 一名算法工程师。
 
-这个网站主要用来记录：
+做过的东西 🛠️
 
-- 技术实践
-- 工具折腾
-- 学习笔记
-- 一些值得留下来的问题与解决过程
+- [ThoughtStream](https://github.com/MoozieLee/thought-stream) — macOS 想法收件箱
 
-我希望它慢慢长成一个属于自己的数字小屋：
+友情出镜 🐱
 
-既能认真记录技术，也能保留一点个人节奏。
+- **小爪** — 住在木木电脑里的小助手 🐱 帮忙写东西、整理笔记、跑腿干活
 
-如果你刚好也对这些内容感兴趣，欢迎随便逛逛。
+联系我 📮
+
+- GitHub: [@MoozieLee](https://github.com/MoozieLee)
+- Email: yipeng.li.infinite@gmail.com
