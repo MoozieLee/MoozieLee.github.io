@@ -29,7 +29,7 @@ tags:
 
 整个交互像 Spotlight 一样轻量。没有文件夹选择、没有标题栏、没有标签强迫症。你在 capture 阶段唯一需要做的事情就是：**打字。**
 
-![捕获界面](/imgs/capture-input-en.png)
+![捕获界面](/imgs/capture-input-zh.png)
 
 ## 不是又一个笔记软件
 
@@ -90,9 +90,9 @@ macOS 原生 Spotlight 风格面板，毛玻璃效果。支持一些轻量斜杠
 - `/tag <标签>` — 按标签过滤
 - `/help` — 查看所有命令
 
-![搜索演示](/imgs/search-onboarding-en.png)
+![搜索演示](/imgs/search-onboarding-zh.png)
 
-![结果浏览](/imgs/tail-results-en.png)
+![结果浏览](/imgs/tail-results-zh.png)
 
 ### 2. CLI
 
