@@ -29,6 +29,8 @@ tags:
 
 整个交互像 Spotlight 一样轻量。没有文件夹选择、没有标题栏、没有标签强迫症。你在 capture 阶段唯一需要做的事情就是：**打字。**
 
+![捕获界面](/imgs/capture-input-en.png)
+
 ## 不是又一个笔记软件
 
 ThoughtStream 不是为了替代 Obsidian 或 Notion。它只做一件事：**让 capture 的摩擦降到最低。**
@@ -79,6 +81,10 @@ macOS 原生 Spotlight 风格面板，毛玻璃效果。支持一些轻量斜杠
 - `/today` — 今天的记录
 - `/tag <标签>` — 按标签过滤
 - `/help` — 查看所有命令
+
+![搜索演示](/imgs/search-onboarding-en.png)
+
+![结果浏览](/imgs/tail-results-en.png)
 
 ### 2. CLI
 
@@ -133,7 +139,7 @@ thought stats --json             # 统计
 安装只需要一行：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/liyipeng/thought-stream/main/scripts/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/MoozieLee/thought-stream/main/scripts/install.sh | sh
 ```
 
 ## 最后
