@@ -6,6 +6,7 @@ title: 关于
 
 做过的东西 🛠️
 
+- 我的头像 - 仿照 Tiktok 的 icon，在没有 AI 作图的年代用 PS 手搓的
 - [ThoughtStream](https://github.com/MoozieLee/thought-stream) — macOS 想法收件箱
 
 友情出镜 🐱
