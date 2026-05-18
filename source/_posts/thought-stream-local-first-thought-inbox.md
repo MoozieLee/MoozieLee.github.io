@@ -16,6 +16,8 @@ tags:
 
 所以我写了一个 macOS 小工具叫 **ThoughtStream**。
 
+![ThoughtStream](/imgs/thought-stream-icon.png)
+
 <!-- more -->
 
 ## 它做什么
